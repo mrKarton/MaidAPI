@@ -13,14 +13,16 @@ exports.getGuilds = async () => {
 exports.getGuild = async (id) => {
     const [res] = await (await connection).query('SELECT * FROM `Guilds`');
 
+    var rt = 0;
+
     res.forEach(guild => {
         if(guild.ID == id)
         {
-            return guild;
+            rt =  guild;
         }
     })
 
-    return 0;
+    return rt;
 }
 
 exports.getSecrets = async () => {
@@ -31,15 +33,16 @@ exports.getSecrets = async () => {
 
 exports.getID = async (secret) => {
     const [res] = await (await connection).query('SELECT * FROM `API_Secrets`');
+    var rt = 0;
 
     res.forEach(pare => {
         if(pare.Secret == secret)
         {
-            return pare.Guild;
+            rt = pare.Guild;
         }
     });
 
-    return 0;
+    return rt;
 }
 
 exports.query = async (query) => {
