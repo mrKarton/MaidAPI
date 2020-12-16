@@ -6,3 +6,12 @@ module.exports.generateSecret = () =>{
     }
     return rs;
 }
+module.exports.objects = (a,b) => {
+    var c = {};
+  
+    for (var i in a) {
+      c[i] = typeof b[i] != 'undefined' ? b[i] : a[i];
+    }
+  
+    return c;
+}
