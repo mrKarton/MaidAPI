@@ -3,11 +3,11 @@ var Mysql   =  require('../../Mysql/ProcessSql');
 var Heling  =  require('../../Helps');
 
 module.exports = async (app) => {
-    app.get('/set', async (req, res) =>{
+    app.post('/set', async (req, res) =>{
         
-        if(typeof req.query.secret == 'undefined') return;
+        if(typeof req.query.key == 'undefined') return;
 
-        var secret = req.query.secret;
+        var secret = req.query.key;
         var id = await Mysql.getID(secret);
         if(id == 0) return;
         var guild = await await Mysql.getGuild(id);

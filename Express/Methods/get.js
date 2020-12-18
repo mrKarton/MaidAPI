@@ -4,9 +4,9 @@ var Mysql   =  require('../../Mysql/ProcessSql');
 module.exports = (app) => {
     app.get('/get', (req, res)=>{
         
-        if(typeof req.query.secret == 'undefined') return;
+        if(typeof req.query.key == 'undefined') return;
 
-        var secret = req.query.secret;
+        var secret = req.query.key;
         Guilds.get(secret).then(guild => {res.send(JSON.stringify(guild))});
     })
 }

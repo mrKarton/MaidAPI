@@ -1,11 +1,11 @@
 # MaidAPI
 **The request-based API for KartonMaid Discord bot!**
---!Beta version basedon `GET` requests. Next versions we are going to the `POST`
+
 
 ## Note:
 configuration.json structure:
 ```json
-    {
+{
     "token":"Discord Bot Token",
     "mysql":{
         "host":"host",
@@ -19,23 +19,62 @@ configuration.json structure:
 
 ***All Express method files in `Express/Metods/...` path have to export function __with 1 argument__!***
 
-## Fast Docs
+# Fast Docs
+Every request requires to send your Developer's Secret Token with GET requset as `key`. It is default setting. But if we are don't need them, we are mark it in Method Description. If in the description described one more `GET` value, it is don't cancels `key` requirement! 
 
-### {IP}:{port}/get
-| Value |           Description       |   Type   |
-|-------|-----------------------------|----------|
-|secret | Your Secret Developer Token | `String` |
+> **Example:** `localhost:8888/get?key=Example`
 
-Get Your Server Data
+## Methods
+
+##### /get
+**Return: Guild Onject[^1]***
 
 
-### {IP}:{port}/set
+##### /set
+Update Your server data.
+
+`POST`
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
-|secret | Your Secret Developer Token         |   `String`    |
-|data   | New Guild object (or only one value) | `JSON string` |
+|data   | New Guild object[^1] (or only one value) | `JSON string` |
 
-### Guild Object Structure
+> **Example:** `localhost:8888/set?key=Example` 
+
+**POST Body: **
+```json
+{
+    "Prefix":".",
+    "Language":"en"
+}
+```
+
+##### /user
+`GET`
+| Value |               Description           |      Type     |
+|-------|-------------------------------------|---------------|
+|uid   | The user's ID                        |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
+
+**Return: [Discord.JS User class](https://discord.js.org/#/docs/main/stable/class/User)**
+
+> **Example** `localhost:888/user?key=Example&uid=471976309598322700`
+**USER MUST HAVE MEMBERSHIP IN YOUR SERVER**
+
+##### /member
+`GET`
+| Value |               Description           |      Type     |
+|-------|-------------------------------------|---------------|
+|uid   | The user's ID                        |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
+
+**Return: [Discord.JS GuildMemberr class](https://discord.js.org/#/docs/main/stable/class/GuildMember)**
+
+> **Example** `localhost:888/member?key=Example&uid=471976309598322700`
+**USER MUST HAVE MEMBERSHIP IN YOUR SERVER**
+
+
+## Objects
+
+##### Guild Object Structure
+[^1]: 
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
 |ID     | Guild Discord ID (snowlake)         |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes)     |
@@ -47,4 +86,4 @@ Get Your Server Data
 |Report_Enabled | Is `Report` module enabled  | `Bool`        |
 |Report_Admin   | ID of Admin's report channel| [Snowflake](https://discord.com/developers/docs/reference#snowflakes) |
 |Report_Public  | ID of Public report channel | [Snowflake](https://discord.com/developers/docs/reference#snowflakes) |
-|discordData **(ONLLY `/get` output)** | Discord JS `Guild` Class | [Discord JS Guild](https://discord.js.org/#/docs/main/stable/class/Guild)|  
+|discordData **(ONLY `/get` output)** | Discord JS `Guild` Class | [Discord JS Guild](https://discord.js.org/#/docs/main/stable/class/Guild)|  
