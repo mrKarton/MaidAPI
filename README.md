@@ -26,21 +26,20 @@ Every request requires to send your Developer's Secret Token with GET requset as
 
 ## Methods
 
-##### /get
-**Return: Guild Onject[^1]***
+### /get
+**Return: [Guild Object](#guild-object-structure)**
 
 
-##### /set
+### /set `POST`
 Update Your server data.
 
-`POST`
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
-|data   | New Guild object[^1] (or only one value) | `JSON string` |
+|data   | New [Guild Object](#guild-object-structure) (or only one value) | `JSON string` |
 
 > **Example:** `localhost:8888/set?key=Example` 
 
-**POST Body: **
+**POST Body:**
 ```json
 {
     "Prefix":".",
@@ -48,8 +47,8 @@ Update Your server data.
 }
 ```
 
-##### /user
-`GET`
+### /user `GET`
+
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
 |uid   | The user's ID                        |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
@@ -57,10 +56,11 @@ Update Your server data.
 **Return: [Discord.JS User class](https://discord.js.org/#/docs/main/stable/class/User)**
 
 > **Example** `localhost:888/user?key=Example&uid=471976309598322700`
+
 **USER MUST HAVE MEMBERSHIP IN YOUR SERVER**
 
-##### /member
-`GET`
+### /member `GET`
+
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
 |uid   | The user's ID                        |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
@@ -68,13 +68,14 @@ Update Your server data.
 **Return: [Discord.JS GuildMemberr class](https://discord.js.org/#/docs/main/stable/class/GuildMember)**
 
 > **Example** `localhost:888/member?key=Example&uid=471976309598322700`
+
 **USER MUST HAVE MEMBERSHIP IN YOUR SERVER**
 
 
 ## Objects
 
 ##### Guild Object Structure
-[^1]: 
+[^1]:Guild Object
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
 |ID     | Guild Discord ID (snowlake)         |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes)     |
