@@ -11,8 +11,11 @@ module.exports = () => {
 
     app.get('/', (req, res) => {
         res.send("Welcome to MaidAPI");
-        
     });
+
+    app.get('/version', (req, res)=>{
+        res.send(require('../version.json'));
+    })
 
     fs.readdir('./Express/Methods', (err, files) => {
         console.log(files);

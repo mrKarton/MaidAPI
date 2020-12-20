@@ -48,7 +48,7 @@ Update Your server data.
 ```
 
 ### /user `GET`
-
+Get user data
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
 |uid   | The user's ID                        |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
@@ -60,7 +60,7 @@ Update Your server data.
 **USER MUST HAVE MEMBERSHIP IN YOUR SERVER**
 
 ### /member `GET`
-
+Get member's data
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
 |uid   | The user's ID                        |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
@@ -71,11 +71,36 @@ Update Your server data.
 
 **USER MUST HAVE MEMBERSHIP IN YOUR SERVER**
 
+### /send `POST`
+Send message in channel
+| Value |               Description           |      Type     |
+|-------|-------------------------------------|---------------|
+|channel| Channel ID                          |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
+|data   | Message Data                        | [Outgoing Message](#outgoing-message-object-structure) |
+
+### /DM `POST`
+Send message as DM
+| Value |               Description           |      Type     |
+|-------|-------------------------------------|---------------|
+|user   | User ID                             |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
+|data   | Message Data                        | [Outgoing Message](#outgoing-message-object-structure) |
+
+### /send `POST`
+Reply to message(DM is not supported)
+| Value |               Description           |      Type     |
+|-------|-------------------------------------|---------------|
+|channel| Channel ID                          |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
+|message| Message ID                          |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes) as `string` |
+|data   | Message Data                        | [Outgoing Message](#outgoing-message-object-structure) |
+
+### /version
+* `Key` is not needed
+Get version and changelog of API
 
 ## Objects
 
 ##### Guild Object Structure
-[^1]:Guild Object
+
 | Value |               Description           |      Type     |
 |-------|-------------------------------------|---------------|
 |ID     | Guild Discord ID (snowlake)         |  [Snowflake](https://discord.com/developers/docs/reference#snowflakes)     |
@@ -88,3 +113,10 @@ Update Your server data.
 |Report_Admin   | ID of Admin's report channel| [Snowflake](https://discord.com/developers/docs/reference#snowflakes) |
 |Report_Public  | ID of Public report channel | [Snowflake](https://discord.com/developers/docs/reference#snowflakes) |
 |discordData **(ONLY `/get` output)** | Discord JS `Guild` Class | [Discord JS Guild](https://discord.js.org/#/docs/main/stable/class/Guild)|  
+
+##### Outgoing Message Object Structure
+| Value |               Description           |      Type     |
+|-------|-------------------------------------|---------------|
+|Content|The text of the mesage               |`String`       |
+(Developing)
+
