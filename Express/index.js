@@ -5,7 +5,7 @@ var app     =  express();
 var bodyPareser = require('body-parser');
 
 module.exports = () => {
-    app.listen(config.port);
+    app.listen(config.port, '0.0.0.0');
     app.use(bodyPareser.json());
     app.use(bodyPareser.urlencoded({extended:true}));
 

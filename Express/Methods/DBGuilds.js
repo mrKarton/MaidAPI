@@ -1,9 +1,10 @@
 var Guilds  =  require('../../Mysql/Guilds');
 var Mysql   =  require('../../Mysql/ProcessSql');
 var Helping  =  require('../../Helps');
+var Discord  =  require('../../Discord/ProcessDS');
 
 module.exports = (app) => {
-    app.get('/get', (req, res)=>{
+    app.get('/get', async (req, res)=>{
         if(typeof req.query.key == 'undefined') return;
         var secret = req.query.key;
         var id = await Mysql.getID(secret);
