@@ -120,3 +120,6 @@ Get version and changelog of API
 |Content|The text of the mesage               |`String`       |
 (Developing)
 
+
+# The list of libraries
+JS - [KMaid.JS](https://github.com/mrKarton/KmaidJS) by *mrKarton*
